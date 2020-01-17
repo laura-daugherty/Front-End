@@ -7,7 +7,6 @@ export const NavBar = props => {
   const routeProps = useContext(RouteContext)
 
   const logout = () => {
-    console.log("logout props", props.routeProps);
     routeProps.routeProps.history.push("/");
     localStorage.clear();
   };
