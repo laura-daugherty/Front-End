@@ -7,7 +7,6 @@ import { Margin } from "./styling";
 function GuestView() {
   const [guestView, setGuestView] = useState([]);
 
-
   const [categories, setCategories] = useState({
     wedding_theme: "",
   });
@@ -16,7 +15,6 @@ function GuestView() {
     axios
       .get("https://bw19-wedding-planner-portfolio.herokuapp.com/api/posts/all")
       .then(event => {
-        console.log("this is a list", event);
         setGuestView(event.data);
       })                             
       .catch(error => {
@@ -43,31 +41,30 @@ function GuestView() {
     .includes(categories.wedding_theme.toLowerCase())
 ); 
 
-
   return (
       <Margin> 
-      {/* searuch bar */}
-      <div>
-        <form onSubmit={changeSubmit}>
-          <label> Wedding Theme </label>
-          <Input 
-            className="InputExampleFocus"
-            icon={<Icon name='search' inverted circular link />}
-            type="text"
-            name="wedding_theme"
-            onChange={changeHandler}>
+      {/* search bar */}
+        <div>
+          <form onSubmit={changeSubmit}>
+            <label> Wedding Theme </label>
+            <Input 
+              className="InputExampleFocus"
+              icon={<Icon name='search' inverted circular link />}
+              type="text"
+              name="wedding_theme"
+              onChange={changeHandler}>
             </Input>
-        </form>
-      </div>
+          </form>
+        </div>
       <Margin> </Margin>
       {/* Website main content */}
-      <article>
-        <Card.Group className="cardGroup" doubling centered itemsPerRow={3}>
-          {filterTheme.map(view => {
-            return <WeddingCard key={view.id} watch={view} />;
-          })}
-        </Card.Group>
-      </article>
+        <article>
+          <Card.Group className="cardGroup" doubling centered itemsPerRow={3}>
+            {filterTheme.map(view => {
+              return <WeddingCard key={view.id} watch={view} />;
+            })}
+          </Card.Group>
+        </article>
     </Margin>
   );
 }
