@@ -3,6 +3,7 @@
   # This is where we will look for package.json/.nvmrc/etc.
   base = "wedding-portfolio"
   publish= "/build"
+  command = "yarn build"
 
   # Directory with the serverless Lambda functions to deploy to AWS.
   functions = "project/functions/"
